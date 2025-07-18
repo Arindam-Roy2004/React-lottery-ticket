@@ -1,0 +1,62 @@
+/* Main container for the Lottery component */
+.Lottery {
+  border: 2px solid #b8860b; /* A golden border for a premium feel */
+  padding: 2rem; /* Generous padding inside the component */
+  border-radius: 15px; /* More rounded corners */
+  text-align: center; /* Center align all the text */
+  margin: 2rem; /* Add some margin to separate it from other elements */
+  background: radial-gradient(circle, #4a4a4a, #2a2a2a); /* Dark gradient background */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* A deeper shadow for a floating effect */
+}
+
+/* Styling for the main title */
+.Lottery h1 {
+  color: #ffd700; /* Gold color for the title */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+}
+
+/* Styling for the 'Buy Ticket' button */
+.Lottery button {
+  background-color: #b8860b; /* Golden background */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 0.8em 1.5em; /* More padding */
+  font-size: 1.1em; /* Larger font */
+  font-weight: bold; /* Bold text */
+  border-radius: 10px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  margin-top: 1rem; /* Space above the button */
+}
+
+/* Hover effect for the button */
+.Lottery button:hover:not(:disabled) {
+  background-color: #daa520; /* Lighter gold on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/* Style for the disabled button */
+.Lottery button:disabled {
+  background-color: #555; /* Greyed out when disabled */
+  cursor: not-allowed; /* Indicate it's not clickable */
+}
+
+/* Styling for the winning message */
+.Lottery-result {
+  color: #4caf50; /* A green color to signify a win */
+  margin-top: 1.5rem; /* Space above the message */
+  font-size: 1.8rem; /* Make the message more prominent */
+  animation: bounce 0.5s ease-in-out; /* Add a fun bouncing animation */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+}
+
+/* Keyframes for the bounce animation */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}

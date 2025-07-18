@@ -1,0 +1,71 @@
+/* Styles for the container of the ticket numbers */
+.Ticket {
+  border: 2px solid #daa520;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  width: fit-content;
+  background-color: #333;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* This is the viewport for each number tumbler */
+.Ticket-num-container {
+  width: 50px;
+  height: 70px; /* This height is crucial */
+  background-color: #222;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden; /* This hides the rest of the number reel */
+  position: relative;
+}
+
+/* This is the reel that contains all 10 numbers and moves vertically */
+.Ticket-num-reel {
+  /* When not rolling, the reel will sit at the final position */
+  transform: var(--final-pos);
+  /* When rolling stops, this provides a smooth settling transition */
+  transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Class to apply the rolling animation */
+.Ticket-num-reel.rolling {
+  /* Let the animation take over the transform property */
+  transform: none;
+  animation-name: slot-machine;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  animation-fill-mode: forwards; /* Stay at the end state of the animation */
+}
+
+/* Styles for each individual number in the ticket */
+.Ticket-num {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #f8f8f8;
+  width: 100%;
+  height: 70px; /* Must match the container height */
+  line-height: 70px; /* Vertically centers the number */
+  text-align: center;
+}
+
+/* Keyframes for the slot machine animation */
+@keyframes slot-machine {
+  0% {
+    /* Start from a high position, spinning rapidly */
+    transform: translateY(-900%);
+    filter: blur(3px); /* Add a motion blur effect */
+  }
+  80% {
+    /* Continue blurring for most of the animation */
+    filter: blur(3px);
+  }
+  100% {
+    /* Land on the final position, which is set by the CSS variable */
+    transform: var(--final-pos);
+    filter: blur(0); /* Remove blur at the end */
+  }
+}
