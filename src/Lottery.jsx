@@ -4,15 +4,22 @@ import Ticket from "./Ticket"; // Import the Ticket component with tumbler anima
 import "./Lottery.css"; // Import styles for the Lottery component.
 
 // The main Lottery component.
-export default function Lottery({ title = "Lottery", n = 3, winningSum = 15 }) {
+export default function Lottery({
+  title = "Lottery",
+  n = 3,
+  winningSum = 15,
+  // Add a new prop for the winning condition function.
+  // The default condition checks if the sum of tickets equals the winningSum.
+  winCond = (tickets) => sum(tickets) === winningSum,
+}) {
   // State to hold the array of ticket numbers.
   let [tickets, setTickets] = useState(genTickets(n));
   // State to manage the rolling animation.
   let [isRolling, setIsRolling] = useState(false);
 
-  // A boolean variable to check if the sum of tickets equals the winning sum.
+  // Use the passed-in winCond function to determine if the user has won.
   // The win is only shown after the rolling animation is complete.
-  const isWinning = sum(tickets) === winningSum && !isRolling;
+  const isWinning = winCond(tickets) && !isRolling;
 
   // Function to generate a new set of tickets and trigger the animation.
   const buyNewTicket = () => {
